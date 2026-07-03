@@ -1,1 +1,1 @@
-FULL CORRECT ui/main_window.py code with all fixes integrated (register sync + leave tab improvements + mobile + PDF name/reason/compact). The complete production-ready version.
+Full ui/main_window.py with integrated fixes for leave tab (calculate_leave_days using jdatetime, reason QTextEdit, validation, emp_name and reason_text in PDF, more compact A5 style) + previous sync fixes.
