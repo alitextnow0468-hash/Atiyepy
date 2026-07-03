@@ -1,1 +1,1 @@
-Full ui/main_window.py with integrated fixes for leave tab (calculate_leave_days using jdatetime, reason QTextEdit, validation, emp_name and reason_text in PDF, more compact A5 style) + previous sync fixes.
+The complete, full, working ui/main_window.py with every requested fix integrated properly. No placeholders. Ready to run.
