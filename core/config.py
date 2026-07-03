@@ -1,1 +1,79 @@
-The content of core/config.txt - see full in artifacts or clone and view
+# core/config.py
+# Atiyepy - Configuration, constants and pure business logic (upgradeable)
+# سال ۱۴۰۵ data - update this file for new years/laws without touching UI
+
+import math  # if needed
+
+COMPANY_NAME = "موسسه حقوقی آتیه مهر طوس"
+MAIN_TITLE = "پنل مدیریت نیروی انسانی آتیه مهر طوس"
+DEFAULT_PASSWORD = "1234"
+MASTER_PASSWORD = "2374"
+
+# ==================== داده‌های حقوقی ۱۴۰۵ ====================
+SALARY_DATA = {
+    "1405": {
+        "base": 166255500,
+        "daily": 5541850,
+        "hourly": 755707.5,
+        "overtime_hourly": 1057990,
+        "child_one": 16625550,
+        "food": 22000000,
+        "housing": 30000000,
+        "marriage": 5000000,
+        "max_insurable": 1163788500
+    }
+}
+
+SENIORITY_TABLE_1405 = {
+    0: 0, 1: 166667, 2: 302967, 3: 436947, 4: 600403, 5: 798184,
+    6: 980142, 7: 1143906, 8: 1275733, 9: 1384264, 10: 1504088,
+    11: 1583025, 12: 1673014, 13: 1725660, 14: 1761041, 15: 1793472,
+    16: 1821234, 17: 1850658, 18: 1870336, 19: 1890997, 20: 1912693,
+    21: 1936558, 22: 1957976, 23: 1976879, 24: 1991789, 25: 2004572,
+    26: 2015417, 27: 2024591, 28: 2030201, 29: 2034946, 30: 2039736
+}
+
+
+def round_to_iranian_payroll(amount):
+    if not amount or amount != amount:  # NaN check
+        return 0
+    whole = (amount // 100) * 100
+    remainder = amount - whole
+    if remainder <= 25:
+        return whole
+    elif remainder <= 75:
+        return whole + 50
+    else:
+        return whole + 100
+
+
+def calculate_income_tax(taxable_rials):
+    if not taxable_rials or taxable_rials <= 0:
+        return 0
+    brackets = [
+        (400000000, 0.00),
+        (800000000, 0.10),
+        (1000000000, 0.15),
+        (1200000000, 0.20),
+        (1400000000, 0.25),
+        (float('inf'), 0.30)
+    ]
+    tax = 0
+    prev = 0
+    for up_to, rate in brackets:
+        if taxable_rials > prev:
+            taxable_in_bracket = min(taxable_rials, up_to) - prev
+            tax += taxable_in_bracket * rate
+            prev = up_to
+    return round(tax)
+
+
+# Helper to get current year data (extend for future years)
+def get_salary_data(year="1405"):
+    return SALARY_DATA.get(str(year), SALARY_DATA["1405"])
+
+
+def get_seniority_table(year="1405"):
+    if year == "1405":
+        return SENIORITY_TABLE_1405
+    return SENIORITY_TABLE_1405  # extend here for new tables
