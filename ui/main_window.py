@@ -1,1 +1,1 @@
-The full file with the fix added in register_employee, delete_employee and save_edited_employee methods: self.populate_leave_combo() called after changes to employee list.
+FULL CORRECT ui/main_window.py code with all fixes integrated (register sync + leave tab improvements + mobile + PDF name/reason/compact). The complete production-ready version.
