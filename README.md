@@ -1,2 +1,1 @@
-# Atiyepy
-Atiyepy - Modular Python Desktop HR/Labor Panel App (PySide6) for Iranian Legal Consulting - Upgradeable structure with .txt source files for offline PyInstaller packaging
+See README.txt in repo root for full Persian/English instructions. This is the modular version of the Atiye Mehr Toos HR Labor Panel.

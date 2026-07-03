@@ -1,0 +1,1 @@
+The content of core/config.txt - see full in artifacts or clone and view

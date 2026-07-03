@@ -1,0 +1,1 @@
+DatabaseManager class extracted - full content in artifacts/atiyepy/core/database.txt
